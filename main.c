@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <math.h>
+#include "vectorlib.h"
+
 //compile as gcc main.c -lm -o main - usar lm para detectar las bibliotecas
+struct VECTOR vector1 = {1.0, 1.0, 1.0};
+struct VECTOR vector2 = {1.0, 1.0, 1.0};
+
 double xToFramePoint(int xp, int hres, int xmax, int xmin){
 	double xResult;
 	xResult = ((xp + (1/2)) * ((double) (xmax - xmin) / (double) hres)) + xmin;
@@ -36,7 +41,6 @@ double getZd(double zw, double ze, double l){
 	ZdResult = (double) (zw - ze) / (double) l;
 	return ZdResult;
 	}
-
 	
 int main(int argc, char* argv[])
 {
@@ -71,6 +75,8 @@ for(i=0; i < hres; i++){
 	
 	}
 }
+vector1 = vectormasvector(vector1, vector2);
+printf("%Lf",vector1.elementos[0]);
 printf("%s\n","Esto es una prueba");
 return 1;	
 	}
