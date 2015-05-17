@@ -2,7 +2,10 @@
 #include <math.h>
 #include "vectorlib.h"
 #include "logica.h"
-
+//Instituto Tecnologico de Costa Rica
+//Introduccion a los graficos por computadora
+//Jose Carlos Alvarez Umana
+//Leonardo Mendoza
 //compile as gcc main.c -lm -o main - usar lm para detectar las bibliotecas
 struct VECTOR vector1 = {1.0, 1.0, 1.0};
 struct VECTOR vector2 = {1.0, 1.0, 1.0};
@@ -40,8 +43,8 @@ for(i=0; i < hres; i++){
 	
 	}
 }
-vector1 = vectorMasVector(vector1, vector2);
-printf("%Lf",vector1.elementos[0]);
+vector1 = vectorPlusVector(vector1, vector2);
+printf("%Lf",vector1.element[0]);
 printf("%s\n","Esto es una prueba");
 return 1;	
 	}

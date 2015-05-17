@@ -1,5 +1,10 @@
 #include <math.h>
 #include "logica.h"
+//Instituto Tecnologico de Costa Rica
+//Introduccion a los graficos por computadora
+//Jose Carlos Alvarez Umana
+//Leonardo Mendoza
+
 double xToFramePoint(int xp, int hres, int xmax, int xmin){
 	double xResult;
 	xResult = ((xp + (1/2)) * ((double) (xmax - xmin) / (double) hres)) + xmin;
