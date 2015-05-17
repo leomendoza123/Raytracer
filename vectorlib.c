@@ -71,13 +71,31 @@ struct VECTOR vectorDividedByLongDouble(struct VECTOR vector, long double escala
 		}
 	}
 	
-long double vectorXvector(struct VECTOR vector1, struct VECTOR vector2){
+long double vectorProductPointvector(struct VECTOR vector1, struct VECTOR vector2){
 	long double result = 0.0;
 	int i=0;
 	for (i=0; i<3; i++){
 		result = result + (vector1.element[i] * vector2.element[i]);
 		}
 	return result;
+	}
+	
+struct VECTOR vectorPerInteger(struct VECTOR vector, int escalar){
+	struct VECTOR vectorResult;
+	int i = 0;
+	for(i=0; i<3; i++){
+		vectorResult.element[i] = (long double) ((long double) vector.element[i] * escalar);
+		}
+	return vectorResult;
+	}
+
+struct VECTOR vectorPerLongDouble(struct VECTOR vector, long double escalar){
+	struct VECTOR vectorResult;
+	int i = 0;
+	for(i=0; i<3; i++){
+		vectorResult.element[i] = (long double) ((long double) vector.element[i] * (long double)escalar);
+		}
+	return vectorResult;
 	}
 	
 struct VECTOR vectorPlusVector(struct VECTOR vector1, struct VECTOR vector2){
