@@ -1,46 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 #include "vectorlib.h"
+#include "logica.h"
 
 //compile as gcc main.c -lm -o main - usar lm para detectar las bibliotecas
 struct VECTOR vector1 = {1.0, 1.0, 1.0};
 struct VECTOR vector2 = {1.0, 1.0, 1.0};
-
-double xToFramePoint(int xp, int hres, int xmax, int xmin){
-	double xResult;
-	xResult = ((xp + (1/2)) * ((double) (xmax - xmin) / (double) hres)) + xmin;
-	return xResult;
-	}
-
-double yToFramePoint(int yp, int vres, int ymax, int ymin){
-	double yResult;
-	yResult = ((yp + (1/2)) * ((double) (ymax - ymin) / (double) vres)) + ymin;
-	return yResult;
-	}
-
-double getL(double xw, double yw, double zw, double xe, double ye, double ze){
-	double lResult;
-	lResult = (sqrt(pow((xw - xe),2)) + sqrt(pow((yw-ye),2)) + sqrt(pow((zw-ze),2)));
-	return lResult;
-	}
-
-double getXd(double xw, double xe, double l){
-	double XdResult;
-	XdResult = (double) (xw - xe) / (double) l;
-	return XdResult;
-	}
-
-double getYd(double yw, double ye, double l){
-	double YdResult;
-	YdResult = (double) (yw - ye) / (double) l;
-	return YdResult;
-	}
-
-double getZd(double zw, double ze, double l){
-	double ZdResult;
-	ZdResult = (double) (zw - ze) / (double) l;
-	return ZdResult;
-	}
 	
 int main(int argc, char* argv[])
 {
@@ -68,7 +33,7 @@ for(i=0; i < hres; i++){
 	Xw = xToFramePoint(i,hres,Xmax,Xmin); 
 	Yw = yToFramePoint(j,vres,Ymax,Ymin);  
 	Zw = 0.0;
-	L = getL(Xw,Yw,Zw,Xe,Ye,Ze);
+	 L = getL(Xw,Yw,Zw,Xe,Ye,Ze);
 	Xd = getXd(Xw, Xe, L);
 	Yd = getYd(Yw, Ye, L);	
 	Zd = getZd(Zw, Ze, L);
