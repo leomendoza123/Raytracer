@@ -6,7 +6,7 @@
 //Introduccion a los graficos por computadora
 //Jose Carlos Alvarez Umana
 //Leonardo Mendoza
-//compile as gcc main.c -lm -o main - usar lm para detectar las bibliotecas
+//compile as gcc main.c vectorlib.c logica.c print.c -lm -o main
 struct VECTOR vector1 = {1.0, 1.0, 1.0};
 struct VECTOR vector2 = {1.0, 1.0, 1.0};
 	
