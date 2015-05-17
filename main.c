@@ -12,6 +12,7 @@ struct VECTOR vector2 = {1.0, 1.0, 1.0};
 	
 int main(int argc, char* argv[])
 {
+printLabelEncabezado();
 int vres = 600;
 int hres = 600;
 int Xmin = -100;
@@ -45,6 +46,6 @@ for(i=0; i < hres; i++){
 }
 vector1 = vectorPlusVector(vector1, vector2);
 printf("%Lf",vector1.element[0]);
-printf("%s\n","Esto es una prueba");
+printf("%s","\nEsto es una prueba");
 return 1;	
 	}
