@@ -75,7 +75,7 @@ for(i=0; i < hres; i++){
 	
 	}
 }
-vector1 = vectormasvector(vector1, vector2);
+vector1 = vectorMasVector(vector1, vector2);
 printf("%Lf",vector1.elementos[0]);
 printf("%s\n","Esto es una prueba");
 return 1;	
