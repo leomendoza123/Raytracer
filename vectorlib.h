@@ -6,5 +6,5 @@ long double getMagnitud(struct VECTOR vector);
 struct VECTOR getNormalizedVector(struct VECTOR vector);
 long double vectorXvector(struct VECTOR vector1, struct VECTOR vector2);
 struct VECTOR vectorPlusVector(struct VECTOR vector1, struct VECTOR vector2);
-struct VECTOR vectorPlusEntero(struct VECTOR vector, int escalar);
+struct VECTOR vectorPlusInteger(struct VECTOR vector, int escalar);
 struct VECTOR vectorPlusLongDouble(struct VECTOR vector, long double escalar);

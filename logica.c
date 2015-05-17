@@ -5,38 +5,38 @@
 //Jose Carlos Alvarez Umana
 //Leonardo Mendoza
 
-double xToFramePoint(int xp, int hres, int xmax, int xmin){
-	double xResult;
-	xResult = ((xp + (1/2)) * ((double) (xmax - xmin) / (double) hres)) + xmin;
+long double xToFramePoint(int xp, int hres, int xmax, int xmin){
+	long double xResult;
+	xResult = ((xp + (1/2)) * ((long double) (xmax - xmin) / (long double) hres)) + xmin;
 	return xResult;
 	}
 
-double yToFramePoint(int yp, int vres, int ymax, int ymin){
-	double yResult;
-	yResult = ((yp + (1/2)) * ((double) (ymax - ymin) / (double) vres)) + ymin;
+long double yToFramePoint(int yp, int vres, int ymax, int ymin){
+	long double yResult;
+	yResult = ((yp + (1/2)) * ((long double) (ymax - ymin) / (long double) vres)) + ymin;
 	return yResult;
 	}
 
-double getL(double xw, double yw, double zw, double xe, double ye, double ze){
-	double lResult;
+long double getL(long double xw, long double yw, long double zw, long double xe, long double ye, long double ze){
+	long double lResult;
 	lResult = (sqrt(pow((xw - xe),2)) + sqrt(pow((yw-ye),2)) + sqrt(pow((zw-ze),2)));
 	return lResult;
 	}
 
-double getXd(double xw, double xe, double l){
-	double XdResult;
-	XdResult = (double) (xw - xe) / (double) l;
+long double getXd(long double xw, long double xe, long double l){
+	long double XdResult;
+	XdResult = (long double) (xw - xe) / (long double) l;
 	return XdResult;
 	}
 
-double getYd(double yw, double ye, double l){
-	double YdResult;
-	YdResult = (double) (yw - ye) / (double) l;
+long double getYd(long double yw, long double ye, long double l){
+	long double YdResult;
+	YdResult = (long double) (yw - ye) / (long double) l;
 	return YdResult;
 	}
 
-double getZd(double zw, double ze, double l){
-	double ZdResult;
-	ZdResult = (double) (zw - ze) / (double) l;
+long double getZd(long double zw, long double ze, long double l){
+	long double ZdResult;
+	ZdResult = (long double) (zw - ze) / (long double) l;
 	return ZdResult;
 	}

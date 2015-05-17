@@ -41,7 +41,7 @@ struct VECTOR vectorPlusVector(struct VECTOR vector1, struct VECTOR vector2){
 	return vectorResult;
 	}
 
-struct VECTOR vectorPlusEntero(struct VECTOR vector, int escalar){
+struct VECTOR vectorPlusInteger(struct VECTOR vector, int escalar){
 	struct VECTOR vectorResult;
 	int i=0;
 	for (i=0; i<3; i++){
