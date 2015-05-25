@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1432322815 source:/home/leo/Desktop/P3/Raytracer/logica.c
+1432532384 source:/home/leo/Desktop/P3/Raytracer/logica.c
 	<math.h>
 	"logica.h"
 
-1432322678 /home/leo/Desktop/P3/Raytracer/logica.h
+1432530230 /home/leo/Desktop/P3/Raytracer/logica.h
 
 1431963922 source:/home/leo/Desktop/P3/Raytracer/print.c
 	"print.h"
@@ -20,11 +20,13 @@
 
 1432526247 /home/leo/Desktop/P3/Raytracer/vectorlib.h
 
-1432520663 source:/home/leo/Desktop/P3/Raytracer/main.c
-	"MESA.h"
+1432532119 source:/home/leo/Desktop/P3/Raytracer/main.c
+	<stdio.h>
+	<math.h>
 	"vectorlib.h"
+	"structs.h"
+	"diseno.h"
 	"logica.h"
-	"diseño.h"
 	"main.h"
 
 1432268062 source:/home/leo/Desktop/P3/Raytracer/structs.c
@@ -37,24 +39,25 @@
 	<stdlib.h>
 	"structs.c"
 
-1432322986 /home/leo/Desktop/P3/Raytracer/structs.h
+1432529439 /home/leo/Desktop/P3/Raytracer/structs.h
 
 1432520158 /home/leo/Desktop/P3/Raytracer/diseño.h
 	<stdlib.h>
 
-1432525753 /home/leo/Desktop/P3/Raytracer/MESA.h
+1432527936 /home/leo/Desktop/P3/Raytracer/MESA.h
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
 
-1432525322 source:/home/leo/Desktop/P3/Raytracer/MESA.c
+1432528517 source:/home/leo/Desktop/P3/Raytracer/MESA.c
+	"vectorlib.h"
+	"structs.h"
 	"MESA.h"
 	"main.h"
 	"malloc.h"
 	<time.h>
 
-1432525712 /home/leo/Desktop/P3/Raytracer/main.h
-	<stdio.h>
-	<math.h>
-	"vectorlib.h"
+1432528542 /home/leo/Desktop/P3/Raytracer/main.h
+
+1432530870 /home/leo/Desktop/P3/Raytracer/diseno.h
 

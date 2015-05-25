@@ -6,7 +6,7 @@
 #include "structs.h"
 
 
-#include "diseño.h"
+#include "diseno.h"
 #include "logica.h"
 
 
@@ -24,10 +24,11 @@
 
 
 int main(int argc, char* argv[]);
-void De_que_color ( Ray Rayo);
+RGB De_que_color ( Ray Rayo);
 INTERSECTION First_Intersection ( Ray Rayo);
 int IntersecionConEspera(Ray *rayo, ESFERA *esfera, double *distancia);
 
+void cargaBuffer ();
 
 int main(int argc, char* argv[])
         {
@@ -39,23 +40,27 @@ int main(int argc, char* argv[])
         //Inicia el buffer
         BufferInit();
         init();
+
+        //
+        //FUNCION_MAGICA_QUE_GUARDA_AVSs(BUFFER);  ///<<<<<<<<<<AQUI
+       // cargaBuffer ();
     }
 
 void cargaBuffer (void){
 
         printLabelEncabezado();
-        int vres = 10;
-        int hres = 10;
+        int vres = 500;
+        int hres = 500;
         int Xmin =  0 ;
         int Ymin =  0;
-        int Xmax =  10;
-        int Ymax =  10;
+        int Xmax =  500;
+        int Ymax =  500;
         double Xw = 0;
         double Yw = 0;
         double Zw = 0;
-        double Xe =   5.0;
-        double Ye =   5.0;
-        double Ze =  -6.0;
+        double Xe =   250;
+        double Ye =   250;
+        double Ze =  -1500;
         double L;
         double Xd = 0;
         double Yd = 0;
@@ -63,8 +68,10 @@ void cargaBuffer (void){
 
         int i =0;
         int j =0;
+
+        RGB Color;
         for(i=0; i < hres; i++){
-                    printf (">>>::Cambio de linea #%d :::<< \n", i);
+                   //printf (">>>::Cambio de linea #%d :::<< \n", i);
                     for(j=0; j < vres; j++){
 
                     // Puntos en framebuffer
@@ -86,14 +93,15 @@ void cargaBuffer (void){
                     Rayo.origen.y = Ye;
                     Rayo.origen.z = Ze;
 
-                    // Toda el color del rayo
-                    De_que_color (Rayo);
+                    // Color del pixel;
+                    Color = De_que_color (Rayo);
+                    plot ( i,  j,  Color);
 
                     }
         }
 }
 
-void De_que_color (Ray Rayo)
+RGB De_que_color (Ray Rayo)
 {
     RGB color;
 
@@ -103,8 +111,8 @@ void De_que_color (Ray Rayo)
     //if (!interseccion)
     //color = BACKGROUND;
     //else:
-    //color = interseccion -> objeto.color;
-    //return color;
+    color = interseccion.color;
+    return color;
 }
 
 
@@ -112,6 +120,8 @@ INTERSECTION First_Intersection (Ray Rayo)
          {
 
                 INTERSECTION  interseccion;
+                interseccion.color.B = 0;  interseccion.color.R = 0; interseccion.color.G=0;
+
                 double tmin = 5000;
                 int numEsferas = sizeof(listaEsferas)/sizeof(listaEsferas[0]);
                 int x;
@@ -124,6 +134,7 @@ INTERSECTION First_Intersection (Ray Rayo)
                      existeInterseccion = IntersecionConEspera (&Rayo, &Esfera, &distancia);
                      if (existeInterseccion){
                         interseccion.distancia = distancia; //TODO: Revisar que sea primera interseccion
+                        interseccion.color = Esfera.color;
                      }
                 }
                 return (interseccion);
@@ -132,33 +143,32 @@ INTERSECTION First_Intersection (Ray Rayo)
 int IntersecionConEspera(Ray *rayo, ESFERA *esfera, double *distancia)
     {
     Ray ray = *rayo;
-    printf (">>>%f,%f,%f<< \n",  ray.direccion.x,  ray.direccion.y,  ray.direccion.z);
+   // printf (">>>%f,%f,%f<< \n",  ray.direccion.x,  ray.direccion.y,  ray.direccion.z);
 
     double a = vectorProductPoint(rayo->direccion, rayo->direccion);
     VECTOR ro_sc = vectorResta(rayo->origen, esfera->punto);
     double b = 2.0 * vectorProductPoint(rayo->direccion, ro_sc);
     double y = vectorProductPoint(ro_sc, ro_sc) - (esfera->radio*esfera->radio) ;
-    if (b < 0) {
-        int tt = 0;
-    }
+
+
     double discriminante = b*b - 4 * a * y;
-    double distSqrt = discriminante*discriminante;
-    double q = b < 0.0 ? (-b - distSqrt) / 2.0 : (-b + distSqrt) / 2.0;
-    double t0 = q / a;
-    double t1 = y / q;
-    if (t0 > t1) {
-        double swap = t0;
-        t0 = t1;
-        t1 = swap;
+
+    double RaizDiscriminante = sqrt(b*b - 4 * a * y);
+
+    if (discriminante >=0 ){
+        double t1 = (-b-RaizDiscriminante)/2*a;
+        double t2 = (-b+RaizDiscriminante)/2*a;
+        if (t1<t2){
+            return t1;
+        }
+        else{
+            return t2;
+        }
+        return 1;
     }
-    if (t1 < 0) {
+    else {
         return 0;
-    } else if(t0 < 0) {
-        *distancia = t1;
-    } else {
-        *distancia = t0;
     }
-    return 1;
 
     }
 

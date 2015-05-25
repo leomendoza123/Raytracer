@@ -5,13 +5,13 @@
 //Jose Carlos Alvarez Umana
 //Leonardo Mendoza
 
- double xToFramePoint(int xp, int hres, int xmax, int xmin){
+ double xToFramePoint(double xp, double hres, double xmax, double xmin){
     double xResult;
 	xResult = (double) ((double)xp + (double)1/2) * (((double) xmax - xmin)/ (double) hres  ) + xmin;
 	return xResult;
 	}
 
- double yToFramePoint(int yp, int vres, int ymax, int ymin){
+ double yToFramePoint(double yp, double vres, double ymax, double ymin){
 	 double yResult;
 	yResult = (double) ((double)yp + (double)1/2) * (((double) ymax - ymin )/ (double)vres) + ymin;
 	return yResult;
@@ -19,7 +19,7 @@
 
 double getL( double xw,  double yw,  double zw,  double xe,  double ye,  double ze){
 	double lResult;
-	lResult = (sqrt(pow((xw - xe),2)) + sqrt(pow((yw-ye),2)) + sqrt(pow((zw-ze),2)));
+	lResult = sqrt((pow((xw - xe),2)) + (pow((yw-ye),2)) + (pow((zw-ze),2)));
 	return lResult;
 	}
 

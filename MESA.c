@@ -41,7 +41,7 @@ void BufferInit (){
 		for (j = 0; j < W_WIDTH; j++){
 			BUFFER[i][j].R = 0;
 			BUFFER[i][j].G = 0;
-			BUFFER[i][j].B = 1;
+			BUFFER[i][j].B = 0;
 		}
 	}
 }
