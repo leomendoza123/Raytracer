@@ -6,12 +6,6 @@ int B;
 
 } RGB;
 
-typedef struct{
-    double distancia;
-    ESFERA esfera;
-    VECTOR puntoInterseccion;
-
-} INTERSECTION;
 
 typedef struct{
     int radio;
@@ -19,6 +13,12 @@ typedef struct{
     VECTOR punto;
 } ESFERA;
 
+typedef struct{
+    double distancia;
+    ESFERA esfera;
+    VECTOR puntoInterseccion;
+
+} INTERSECTION;
 
 typedef struct{
     VECTOR origen;
