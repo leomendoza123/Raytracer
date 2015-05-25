@@ -86,6 +86,7 @@ fp = fopen("imagen.avs","w");
        }
   }
 fclose(fp);
+printf("\n\nlisto imagen.avs");
  }
 
 }
