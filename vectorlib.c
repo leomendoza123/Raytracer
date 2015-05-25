@@ -9,6 +9,17 @@
 //Esta biblioteca esta diseñada para vectores de 3 elementos
 
 
+double vectorProductPoint(VECTOR a, VECTOR b){
+    return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
+	}
+
+VECTOR vectorResta(VECTOR a, VECTOR b){
+    VECTOR x = {a.x - b.x, a.y - b.y, a.z - b.z};
+    return x;
+ }
+
+/*
+
 long double getMagnitude(struct VECTOR vector){
 	long double result;
 	result = sqrt(pow(vector.element[0],2) + pow(vector.element[1],2) + pow(vector.element[2],2));
@@ -36,7 +47,7 @@ struct VECTOR getNormalizedVector(struct VECTOR vector){
 	}
 
 struct VECTOR vectorDividedByInteger(struct VECTOR vector, int escalar){
-	
+
 	if(escalar == 0){
 		struct VECTOR vectorResult;
 		printLabelError3();
@@ -54,7 +65,7 @@ struct VECTOR vectorDividedByInteger(struct VECTOR vector, int escalar){
 	}
 
 struct VECTOR vectorDividedByLongDouble(struct VECTOR vector, long double escalar){
-	
+
 	if(escalar == 0.0){
 		struct VECTOR vectorResult;
 		printLabelError3();
@@ -70,16 +81,9 @@ struct VECTOR vectorDividedByLongDouble(struct VECTOR vector, long double escala
 			return vectorResult;
 		}
 	}
-	
-long double vectorProductPointvector(struct VECTOR vector1, struct VECTOR vector2){
-	long double result = 0.0;
-	int i=0;
-	for (i=0; i<3; i++){
-		result = result + (vector1.element[i] * vector2.element[i]);
-		}
-	return result;
-	}
-	
+
+
+
 struct VECTOR vectorPerInteger(struct VECTOR vector, int escalar){
 	struct VECTOR vectorResult;
 	int i = 0;
@@ -97,7 +101,7 @@ struct VECTOR vectorPerLongDouble(struct VECTOR vector, long double escalar){
 		}
 	return vectorResult;
 	}
-	
+
 struct VECTOR vectorPlusVector(struct VECTOR vector1, struct VECTOR vector2){
 	struct VECTOR vectorResult;
 	int i=0;
@@ -115,7 +119,7 @@ struct VECTOR vectorPlusInteger(struct VECTOR vector, int escalar){
 		}
 	return vectorResult;
 	}
-	
+
 struct VECTOR vectorPlusLongDouble(struct VECTOR vector, long double escalar){
 	struct VECTOR vectorResult;
 	int i=0;
@@ -124,3 +128,6 @@ struct VECTOR vectorPlusLongDouble(struct VECTOR vector, long double escalar){
 		}
 	return vectorResult;
 	}
+
+*/
+

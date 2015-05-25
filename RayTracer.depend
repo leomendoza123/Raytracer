@@ -1,0 +1,47 @@
+# depslib dependency file v1.0
+1432322815 source:/home/leo/Desktop/P3/Raytracer/logica.c
+	<math.h>
+	"logica.h"
+
+1432322678 /home/leo/Desktop/P3/Raytracer/logica.h
+
+1431963922 source:/home/leo/Desktop/P3/Raytracer/print.c
+	"print.h"
+
+1431963922 /home/leo/Desktop/P3/Raytracer/print.h
+	<stdio.h>
+	<stdlib.h>
+
+1432318976 source:/home/leo/Desktop/P3/Raytracer/vectorlib.c
+	<stdio.h>
+	<math.h>
+	"vectorlib.h"
+	"print.h"
+
+1432318868 /home/leo/Desktop/P3/Raytracer/vectorlib.h
+	"structs.h"
+
+1432513977 source:/home/leo/Desktop/P3/Raytracer/main.c
+	<stdio.h>
+	<math.h>
+	"vectorlib.h"
+	"logica.h"
+	"diseño.h"
+	<math.h>
+
+1432268062 source:/home/leo/Desktop/P3/Raytracer/structs.c
+
+1432268095 source:/home/leo/Desktop/P3/Raytracer/diseno.c
+
+1432268062 /home/leo/Desktop/P3/Raytracer/structs.c
+
+1432267794 /home/leo/Desktop/P3/Raytracer/diseno.c
+	<stdlib.h>
+	"structs.c"
+
+1432322986 /home/leo/Desktop/P3/Raytracer/structs.h
+
+1432514116 /home/leo/Desktop/P3/Raytracer/diseño.h
+	<stdlib.h>
+	"structs.c"
+
