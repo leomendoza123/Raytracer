@@ -1,3 +1,4 @@
+
 typedef struct{
 int R;
 int G;
@@ -9,13 +10,6 @@ typedef struct{
     double distancia;
 
 } INTERSECTION;
-
-typedef struct{
-	double x;
-	double y;
-	double z;
-} VECTOR;
-
 
 typedef struct{
     int radio;

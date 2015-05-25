@@ -2,6 +2,7 @@
 #include <math.h>
 #include "vectorlib.h"
 #include "print.h"
+
 //Instituto Tecnologico de Costa Rica
 //Introduccion a los graficos por computadora
 //Jose Carlos Alvarez Umana

@@ -1,18 +1,5 @@
-
 #include <stdio.h>
 #include <math.h>
-
-#include "vectorlib.h"
-#include "structs.h"
-
-
-#include "diseño.h"
-#include "logica.h"
-
-
-
-#include "main.h"
-#include "MESA.h"
 
 
 //Instituto Tecnologico de Costa Rica
@@ -21,27 +8,19 @@
 //Leonardo Mendoza
 //compile as gcc main.c vectorlib.c logica.c print.c -lm -o main
 
-
-
-int main(int argc, char* argv[]);
 void De_que_color ( Ray Rayo);
 INTERSECTION First_Intersection ( Ray Rayo);
-int IntersecionConEspera(Ray *rayo, ESFERA *esfera, double *distancia);
 
 
 int main(int argc, char* argv[])
         {
-        W_HEIGHT = 500;
-        W_WIDTH = 500;
+        W_HEIGHT = 600;
+        W_WIDTH = 600;
 
-        //Inicia GLUT
         glutInit(&argc, argv);
-        //Inicia el buffer
-        BufferInit();
-        init();
-    }
-
-void cargaBuffer (void){
+        init ();
+        ///DIBUJADO
+        draw ();
 
         printLabelEncabezado();
         int vres = 10;
@@ -89,9 +68,25 @@ void cargaBuffer (void){
                     // Toda el color del rayo
                     De_que_color (Rayo);
 
+
+
+                    printf (">>>%g,%g<< ___", Xw, Yw);
+                    printf (">>>%f,%f,%f<< \n",  Rayo.direccion.x,  Rayo.direccion.y,  Rayo.direccion.z);
+
                     }
         }
-}
+
+
+        //printf("%d", vector1);
+
+       /* vector1 = vectorPlusVector(vector1, vector2);
+        printf("%Lf",vector1.element[0]);
+        printf("%s","\nEsto es una prueba");
+        return 1;
+        */
+    }
+
+
 
 void De_que_color (Ray Rayo)
 {
@@ -106,6 +101,8 @@ void De_que_color (Ray Rayo)
     //color = interseccion -> objeto.color;
     //return color;
 }
+
+
 
 
 INTERSECTION First_Intersection (Ray Rayo)

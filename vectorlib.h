@@ -1,6 +1,8 @@
-#include "structs.h"
-
-
+typedef struct{
+	double x;
+	double y;
+	double z;
+} VECTOR;
 
 
 double vectorProductPoint(VECTOR a, VECTOR b);

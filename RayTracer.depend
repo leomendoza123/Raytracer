@@ -12,22 +12,20 @@
 	<stdio.h>
 	<stdlib.h>
 
-1432318976 source:/home/leo/Desktop/P3/Raytracer/vectorlib.c
+1432525108 source:/home/leo/Desktop/P3/Raytracer/vectorlib.c
 	<stdio.h>
 	<math.h>
 	"vectorlib.h"
 	"print.h"
 
-1432318868 /home/leo/Desktop/P3/Raytracer/vectorlib.h
-	"structs.h"
+1432526247 /home/leo/Desktop/P3/Raytracer/vectorlib.h
 
-1432513977 source:/home/leo/Desktop/P3/Raytracer/main.c
-	<stdio.h>
-	<math.h>
+1432520663 source:/home/leo/Desktop/P3/Raytracer/main.c
+	"MESA.h"
 	"vectorlib.h"
 	"logica.h"
 	"diseño.h"
-	<math.h>
+	"main.h"
 
 1432268062 source:/home/leo/Desktop/P3/Raytracer/structs.c
 
@@ -41,7 +39,22 @@
 
 1432322986 /home/leo/Desktop/P3/Raytracer/structs.h
 
-1432514116 /home/leo/Desktop/P3/Raytracer/diseño.h
+1432520158 /home/leo/Desktop/P3/Raytracer/diseño.h
 	<stdlib.h>
-	"structs.c"
+
+1432525753 /home/leo/Desktop/P3/Raytracer/MESA.h
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+
+1432525322 source:/home/leo/Desktop/P3/Raytracer/MESA.c
+	"MESA.h"
+	"main.h"
+	"malloc.h"
+	<time.h>
+
+1432525712 /home/leo/Desktop/P3/Raytracer/main.h
+	<stdio.h>
+	<math.h>
+	"vectorlib.h"
 
