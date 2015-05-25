@@ -8,7 +8,8 @@ int B;
 
 typedef struct{
     double distancia;
-    RGB color;
+    ESFERA esfera;
+    VECTOR puntoInterseccion;
 
 } INTERSECTION;
 

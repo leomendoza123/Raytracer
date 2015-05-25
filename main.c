@@ -25,8 +25,9 @@
 
 int main(int argc, char* argv[]);
 RGB De_que_color ( Ray Rayo);
-INTERSECTION First_Intersection ( Ray Rayo);
-int IntersecionConEspera(Ray *rayo, ESFERA *esfera, double *distancia);
+int First_Intersection ( Ray Rayo, INTERSECTION *interseccion );
+int HayInterseccion(Ray *rayo, ESFERA *esfera, double *distancia);
+VECTOR PuntoInterseccion (Ray Rayo, double distancia);
 
 void cargaBuffer ();
 
@@ -106,20 +107,21 @@ RGB De_que_color (Ray Rayo)
     RGB color;
 
     INTERSECTION  interseccion;
-    interseccion = First_Intersection(Rayo);
+    if (First_Intersection(Rayo, &interseccion) == 1){
+        return interseccion.esfera.color;
+    }
+    else {
 
-    //if (!interseccion)
-    //color = BACKGROUND;
-    //else:
-    color = interseccion.color;
-    return color;
+        return BACKGROUD;
+    }
 }
 
 
-INTERSECTION First_Intersection (Ray Rayo)
+int First_Intersection (Ray Rayo, INTERSECTION *interseccionEcontrada)
          {
 
                 INTERSECTION  interseccion;
+                interseccion.distancia = 0;
                 interseccion.color.B = 0;  interseccion.color.R = 0; interseccion.color.G=0;
 
                 double tmin = 5000;
@@ -131,16 +133,31 @@ INTERSECTION First_Intersection (Ray Rayo)
                 for (x=0; x < numEsferas; x++){
                     double distancia;
                     ESFERA Esfera = listaEsferas[x];
-                     existeInterseccion = IntersecionConEspera (&Rayo, &Esfera, &distancia);
+                     existeInterseccion = HayInterseccionConEferas (&Rayo, &Esfera, &distancia);
                      if (existeInterseccion){
                         interseccion.distancia = distancia; //TODO: Revisar que sea primera interseccion
-                        interseccion.color = Esfera.color;
+                        interseccion.esfera = Esfera;
                      }
                 }
-                return (interseccion);
-        }
+                if (interseccion.distancia != 0 ){
+                    interseccion.puntoInterseccion = PuntoInterseccion (Rayo, interseccion.distancia);
+                    *interseccionEcontrada = interseccion;
+                    return 1;
+                }
+                else {
 
-int IntersecionConEspera(Ray *rayo, ESFERA *esfera, double *distancia)
+                    return 0;
+                }
+        }
+VECTOR PuntoInterseccion (Ray Rayo, double distancia){
+    VECTOR punto = {Rayo.direccion.x *distancia,
+                    Rayo.direccion.y *distancia,
+                    Rayo.direccion.z *distancia};
+    return punto;
+
+}
+
+int HayInterseccionConEferas(Ray *rayo, ESFERA *esfera, double *distancia)
     {
     Ray ray = *rayo;
    // printf (">>>%f,%f,%f<< \n",  ray.direccion.x,  ray.direccion.y,  ray.direccion.z);
