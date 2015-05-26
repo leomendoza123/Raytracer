@@ -14,6 +14,12 @@ double vectorProductoPunto(VECTOR a, VECTOR b){
     return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
 	}
 
+VECTOR vectorNegado(VECTOR a){
+    VECTOR x = { (a.x * -1) , (a.y * -1) , (a.z * -1) };
+    return x;
+	}
+
+
 VECTOR vectorResta(VECTOR a, VECTOR b){
     VECTOR x = {a.x - b.x, a.y - b.y, a.z - b.z};
     return x;

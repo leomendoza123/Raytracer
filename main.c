@@ -170,6 +170,8 @@ RGB De_que_color (Ray Rayo)
         unsigned int numLuces = sizeof(listaLuces)/sizeof(listaLuces[0]);
         int x;
         VECTOR L;
+        double CosVectores;
+         double spec = 0;
         for (x = 0; x< numLuces; x++){
             //printf ("%f, %f, %f __[[\n", interseccion.puntoInterseccion.x, interseccion.puntoInterseccion.y, interseccion.puntoInterseccion.z);
 
@@ -179,30 +181,56 @@ RGB De_que_color (Ray Rayo)
             LineaHaciaLuz.direccion = L;
             LineaHaciaLuz.origen = interseccion.puntoInterseccion;
             INTERSECTION CausanteDeSombra;
-            if (!First_Intersection(LineaHaciaLuz, &CausanteDeSombra ))
+            if (!First_Intersection(LineaHaciaLuz, &CausanteDeSombra )){
 
+                //REFLEXION DIFUZA
+                CosVectores = vectorProductoPunto(N, L);
 
-            //printf ("DirLuz: %f, %f, %f __\n", L.x, L.y, L.z);
+                if (CosVectores<0){
+                    CosVectores = 0;
+                }
+                iluminacion += CosVectores * interseccion.esfera.KD * listaLuces[x].Ip ;
 
-            iluminacion += (vectorProductoPunto(N, L) * interseccion.esfera.KD * listaLuces[x].Ip) + (Ka * Ia);
+                //REFLEJO ESPECULAR
 
-            if(iluminacion > 1.0){
-				iluminacion = 1.0;
-				}
-            //printf ("Iluminacion: %f \n", iluminacion);
-            //}
-            else{
-                    //printf ("causante de sombr: %f\n",CausanteDeSombra.distancia);
+                VECTOR V = vectorNegado(Rayo.direccion);
+                VECTOR R = vectorResta(vectorMultiplicacion(N, CosVectores * 2.0), L);
+                double Ri = vectorProductoPunto(V, R);
+                if (!(Ri < 0)) {
+                    spec += pow(Ri, KN) * KS * listaLuces[x].Ip;
+                }
+
+               // printf ("Specular: %f \n", spec);
+                /*
+                printf ("V: %f, %f, %f, \n", V.x, V.y, V.z) ;
+                printf ("R: %f, %f, %f, \n", R.x, R.y, R.z) ;
+                printf ("Ri: %f \n", Ri);
+                printf ("KN, KS : %f, %f \n", KN, KS);*/
 
             }
 
         }
 
     //return interseccion.esfera.color;
+
+        iluminacion +=  (Ka * Ia);
+
+        if(iluminacion > 1.0){
+				iluminacion = 1.0;
+        }
+
+        //printf("%f  \n",iluminacion);
+
+
+
+        double B = (double)interseccion.esfera.color.B*iluminacion +spec;
+        double G = (double)interseccion.esfera.color.G*iluminacion +spec;
+        double R = (double)interseccion.esfera.color.R*iluminacion +spec;
+        if (B>1){ B = 1;}   if (G>1){ G = 1;}   if (R>1){ R = 1;}
         RGB color;
-        color.B =  (double)interseccion.esfera.color.B*iluminacion;
-        color.G =  (double)interseccion.esfera.color.G*iluminacion;
-        color.R =  (double)interseccion.esfera.color.R*iluminacion;
+        color.B = B;
+        color.G = G;
+        color.R = R;
         return color;
         //return EscalarColor(interseccion.esfera.color, iluminacion) ;
     }
@@ -219,7 +247,8 @@ int First_Intersection (Ray Rayo, INTERSECTION *interseccionEcontrada)
                 INTERSECTION  interseccion;
                 interseccion.distancia = 0;
 
-                double tmin = 5000;
+                double tmin = 9000;
+                double distanciaAnterior = tmin;
                 int numEsferas = sizeof(listaEsferas)/sizeof(listaEsferas[0]);
                 int x;
                 int existeInterseccion;
@@ -229,12 +258,14 @@ int First_Intersection (Ray Rayo, INTERSECTION *interseccionEcontrada)
                     double distancia;
                     ESFERA Esfera = listaEsferas[x];
                      existeInterseccion = HayInterseccionConEferas (&Rayo, &Esfera, &distancia);
-                     if (existeInterseccion){
+
+                     if (existeInterseccion && distancia<distanciaAnterior || distanciaAnterior<0.000001  ){
                         interseccion.distancia = distancia; //TODO: Revisar que sea primera interseccion
                         interseccion.esfera = Esfera;
+                        distanciaAnterior = distancia;
                      }
                 }
-                if (interseccion.distancia > 0.0000005 ){
+                if (interseccion.distancia > 0.0000001 ){
                     interseccion.puntoInterseccion = PuntoInterseccion (Rayo, interseccion.distancia);
                     *interseccionEcontrada = interseccion;
                     return 1;
