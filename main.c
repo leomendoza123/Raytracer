@@ -184,11 +184,15 @@ RGB De_que_color (Ray Rayo)
 
             //printf ("DirLuz: %f, %f, %f __\n", L.x, L.y, L.z);
 
-            iluminacion += vectorProductoPunto(N, L) ;
+            iluminacion += (vectorProductoPunto(N, L) * interseccion.esfera.KD * listaLuces[x].Ip) + (Ka * Ia);
+
+            if(iluminacion > 1.0){
+				iluminacion = 1.0;
+				}
             //printf ("Iluminacion: %f \n", iluminacion);
             //}
             else{
-                    printf ("causante de sombr: %f\n",CausanteDeSombra.distancia);
+                    //printf ("causante de sombr: %f\n",CausanteDeSombra.distancia);
 
             }
 
@@ -230,7 +234,7 @@ int First_Intersection (Ray Rayo, INTERSECTION *interseccionEcontrada)
                         interseccion.esfera = Esfera;
                      }
                 }
-                if (interseccion.distancia > 0 ){
+                if (interseccion.distancia > 0.0000005 ){
                     interseccion.puntoInterseccion = PuntoInterseccion (Rayo, interseccion.distancia);
                     *interseccionEcontrada = interseccion;
                     return 1;
