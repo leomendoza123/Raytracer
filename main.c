@@ -194,9 +194,11 @@ int First_Intersection (Ray Rayo, INTERSECTION *interseccionEcontrada)
                 }
         }
 VECTOR PuntoInterseccion (Ray Rayo, double distancia){
-    VECTOR punto = {Rayo.direccion.x *distancia,
-                    Rayo.direccion.y *distancia,
-                    Rayo.direccion.z *distancia};
+    printf ("Rayo Direc; %f, %f, %f\n", Rayo.direccion.x, Rayo.direccion.y, Rayo.direccion.z);
+    printf ("Rayo Orig; %f, %f, %f\n", Rayo.origen.x, Rayo.origen.y, Rayo.origen.z);
+    printf ("Distancia; %f\n", distancia);
+    VECTOR punto = vectorSuma(Rayo.origen, vectorMultiplicacion(Rayo.direccion, distancia));
+    printf ("Punto I: %f, %f, %f \n\n", punto.x, punto.y, punto.z);
     return punto;
 
 }
@@ -206,10 +208,10 @@ int HayInterseccionConEferas(Ray *rayo, ESFERA *esfera, double *distancia)
     Ray ray = *rayo;
    // printf (">>>%f,%f,%f<< \n",  ray.direccion.x,  ray.direccion.y,  ray.direccion.z);
 
-    double a = vectorProductPoint(rayo->direccion, rayo->direccion);
+    double a = vectorProductoPunto(rayo->direccion, rayo->direccion);
     VECTOR ro_sc = vectorResta(rayo->origen, esfera->punto);
-    double b = 2.0 * vectorProductPoint(rayo->direccion, ro_sc);
-    double y = vectorProductPoint(ro_sc, ro_sc) - (esfera->radio*esfera->radio) ;
+    double b = 2.0 * vectorProductoPunto(rayo->direccion, ro_sc);
+    double y = vectorProductoPunto(ro_sc, ro_sc) - (esfera->radio*esfera->radio) ;
 
 
     double discriminante = b*b - 4 * a * y;
@@ -220,10 +222,10 @@ int HayInterseccionConEferas(Ray *rayo, ESFERA *esfera, double *distancia)
         double t1 = (-b-RaizDiscriminante)/2*a;
         double t2 = (-b+RaizDiscriminante)/2*a;
         if (t1<t2){
-            return t1;
+            *distancia =  t1;
         }
         else{
-            return t2;
+            *distancia =  t2;
         }
         return 1;
     }

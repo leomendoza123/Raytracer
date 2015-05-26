@@ -31,12 +31,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="RayTracer.cbp" />
-		<Unit filename="RayTracer.depend" />
-		<Unit filename="diseno.c">
+		<Unit filename="MESA.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="diseño.h" />
+		<Unit filename="MESA.h" />
+		<Unit filename="RayTracer.cbp" />
+		<Unit filename="RayTracer.depend" />
+		<Unit filename="RayTracer.layout" />
+		<Unit filename="diseno.h" />
+		<Unit filename="imagen.avs" />
+		<Unit filename="imagen.txt" />
 		<Unit filename="logica.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -45,13 +49,12 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="main.h" />
+		<Unit filename="makefile" />
 		<Unit filename="print.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="print.h" />
-		<Unit filename="structs.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="structs.h" />
 		<Unit filename="vectorlib.c">
 			<Option compilerVar="CC" />

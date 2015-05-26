@@ -23,6 +23,9 @@ double getL( double xw,  double yw,  double zw,  double xe,  double ye,  double 
 	return lResult;
 	}
 
+
+
+// TODO optimizar a una funcion
 double getXd( double xw,  double xe,  double l){
 	 double XdResult;
 	XdResult = ( (double)xw - xe) / ( (double) l);

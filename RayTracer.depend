@@ -61,3 +61,54 @@
 
 1432530870 /home/leo/Desktop/P3/Raytracer/diseno.h
 
+1432601786 source:/home/leo/Desktop/P3-2/Raytracer/MESA.c
+	"vectorlib.h"
+	"structs.h"
+	"MESA.h"
+	"main.h"
+	"malloc.h"
+	<time.h>
+
+1432601786 /home/leo/Desktop/P3-2/Raytracer/vectorlib.h
+
+1432601786 /home/leo/Desktop/P3-2/Raytracer/structs.h
+
+1432601786 /home/leo/Desktop/P3-2/Raytracer/MESA.h
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+
+1432601786 /home/leo/Desktop/P3-2/Raytracer/main.h
+
+1432601786 source:/home/leo/Desktop/P3-2/Raytracer/print.c
+	"print.h"
+
+1432601786 /home/leo/Desktop/P3-2/Raytracer/print.h
+	<stdio.h>
+	<stdlib.h>
+
+1432601786 source:/home/leo/Desktop/P3-2/Raytracer/vectorlib.c
+	<stdio.h>
+	<math.h>
+	"vectorlib.h"
+	"print.h"
+
+1432601900 source:/home/leo/Desktop/P3-2/Raytracer/logica.c
+	<math.h>
+	"logica.h"
+
+1432601786 /home/leo/Desktop/P3-2/Raytracer/logica.h
+
+1432602099 source:/home/leo/Desktop/P3-2/Raytracer/main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"vectorlib.h"
+	"structs.h"
+	"diseno.h"
+	"logica.h"
+	"main.h"
+	"MESA.h"
+
+1432601945 /home/leo/Desktop/P3-2/Raytracer/diseno.h
+
