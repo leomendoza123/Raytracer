@@ -159,7 +159,36 @@ RGB De_que_color (Ray Rayo)
 
     INTERSECTION  interseccion;
     if (First_Intersection(Rayo, &interseccion) == 1){
-        return interseccion.esfera.color;
+
+        //printf ("%f, %f, %f __ <<\n", interseccion.puntoInterseccion.x, interseccion.puntoInterseccion.y, interseccion.puntoInterseccion.z);
+
+        VECTOR N = DireccionNormalizada(interseccion.puntoInterseccion, interseccion.esfera.punto );
+
+       // printf ("Normal: %f, %f, %f __ \n", N.x, N.y, N.z);
+
+        double iluminacion = 0;
+        unsigned int numLuces = sizeof(listaLuces)/sizeof(listaLuces[0]);
+        int x;
+        VECTOR L;
+        for (x = 0; x< numLuces; x++){
+            //printf ("%f, %f, %f __[[\n", interseccion.puntoInterseccion.x, interseccion.puntoInterseccion.y, interseccion.puntoInterseccion.z);
+
+
+            L = DireccionNormalizada (listaLuces[x].origen, interseccion.puntoInterseccion);
+            //printf ("DirLuz: %f, %f, %f __\n", L.x, L.y, L.z);
+
+            iluminacion += vectorProductoPunto(N, L);
+            //printf ("Iluminacion: %f \n", iluminacion);
+
+        }
+
+    //return interseccion.esfera.color;
+        RGB color;
+        color.B =  (double)interseccion.esfera.color.B*iluminacion;
+        color.G =  (double)interseccion.esfera.color.G*iluminacion;
+        color.R =  (double)interseccion.esfera.color.R*iluminacion;
+        return color;
+        //return EscalarColor(interseccion.esfera.color, iluminacion) ;
     }
     else {
 
@@ -200,11 +229,11 @@ int First_Intersection (Ray Rayo, INTERSECTION *interseccionEcontrada)
                 }
         }
 VECTOR PuntoInterseccion (Ray Rayo, double distancia){
-    printf ("Rayo Direc; %f, %f, %f\n", Rayo.direccion.x, Rayo.direccion.y, Rayo.direccion.z);
-    printf ("Rayo Orig; %f, %f, %f\n", Rayo.origen.x, Rayo.origen.y, Rayo.origen.z);
-    printf ("Distancia; %f\n", distancia);
+   //printf ("Rayo Direc; %f, %f, %f\n", Rayo.direccion.x, Rayo.direccion.y, Rayo.direccion.z);
+    //printf ("Rayo Orig; %f, %f, %f\n", Rayo.origen.x, Rayo.origen.y, Rayo.origen.z);
+    //printf ("Distancia; %f\n", distancia);
     VECTOR punto = vectorSuma(Rayo.origen, vectorMultiplicacion(Rayo.direccion, distancia));
-    printf ("Punto I: %f, %f, %f \n\n", punto.x, punto.y, punto.z);
+    //printf ("Punto I: %f, %f, %f \n\n", punto.x, punto.y, punto.z);
     return punto;
 
 }

@@ -1,8 +1,8 @@
 
 typedef struct{
-int R;
-int G;
-int B;
+double R;
+double G;
+double B;
 
 } RGB;
 
