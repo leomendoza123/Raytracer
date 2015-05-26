@@ -3,7 +3,7 @@ ESFERA listaEsferas[] = //{{100,{1,0,1}, {250,250,1000}}};
 
 LUZ listaLuces[] = {{500,500,0,0.5}};
 
-RGB BACKGROUD = {0,0,0};
+RGB BACKGROUD = {171,171,171};
 
 double Ka=0.5;
 double Ia=0.5;
