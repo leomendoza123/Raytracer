@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="diseno.c" open="0" top="0" tabpos="6">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="diseño.h" open="1" top="0" tabpos="6">
+		<Cursor position="58" topLine="0" />
+	</File>
+	<File name="logica.c" open="1" top="0" tabpos="1">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="logica.h" open="1" top="0" tabpos="7">
+		<Cursor position="360" topLine="0" />
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="2">
+		<Cursor position="1237" topLine="40" />
+	</File>
+	<File name="structs.c" open="0" top="0" tabpos="3">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="structs.h" open="1" top="0" tabpos="4">
+		<Cursor position="29" topLine="0" />
+	</File>
+	<File name="vectorlib.c" open="1" top="0" tabpos="5">
+		<Cursor position="462" topLine="0" />
+	</File>
+	<File name="vectorlib.h" open="1" top="1" tabpos="3">
+		<Cursor position="0" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
