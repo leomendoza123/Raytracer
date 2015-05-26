@@ -182,22 +182,25 @@ RGB De_que_color (Ray Rayo)
             LineaHaciaLuz.origen = interseccion.puntoInterseccion;
             INTERSECTION CausanteDeSombra;
             if (!First_Intersection(LineaHaciaLuz, &CausanteDeSombra )){
-
+                double F =  (double)1/((double)listaLuces[x].C1+interseccion.distancia*listaLuces[x].C2+(listaLuces[x].C3*interseccion.distancia*interseccion.distancia));
+                if (F>1){
+                    F=1;
+                }
                 //REFLEXION DIFUZA
                 CosVectores = vectorProductoPunto(N, L);
 
                 if (CosVectores<0){
                     CosVectores = 0;
                 }
-                iluminacion += CosVectores * interseccion.esfera.KD * listaLuces[x].Ip ;
+                iluminacion += CosVectores * interseccion.esfera.KD * listaLuces[x].Ip * F;
 
                 //REFLEJO ESPECULAR
 
                 VECTOR V = vectorNegado(Rayo.direccion);
-                VECTOR R = vectorResta(vectorMultiplicacion(N, CosVectores * 2.0), L);
+                VECTOR R = vectorResta(vectorMultiplicacion(N, CosVectores * 2.0), L) ;
                 double Ri = vectorProductoPunto(V, R);
                 if (!(Ri < 0)) {
-                    spec += pow(Ri, KN) * KS * listaLuces[x].Ip;
+                    spec += pow(Ri, KN) * KS * listaLuces[x].Ip * F ;
                 }
 
                // printf ("Specular: %f \n", spec);

@@ -24,6 +24,9 @@ typedef struct{
 typedef struct{
     VECTOR origen;
     double Ip;
+    double C1;
+    double C2;
+    double C3;
 } LUZ;
 
 
