@@ -11,6 +11,7 @@ typedef struct{
     int radio;
     RGB color;
     VECTOR punto;
+    double KD;
 } ESFERA;
 
 typedef struct{
@@ -22,6 +23,7 @@ typedef struct{
 
 typedef struct{
     VECTOR origen;
+    double Ip;
 } LUZ;
 
 

@@ -177,7 +177,11 @@ RGB De_que_color (Ray Rayo)
             L = DireccionNormalizada (listaLuces[x].origen, interseccion.puntoInterseccion);
             //printf ("DirLuz: %f, %f, %f __\n", L.x, L.y, L.z);
 
-            iluminacion += vectorProductoPunto(N, L);
+            iluminacion += (vectorProductoPunto(N, L) * interseccion.esfera.KD * listaLuces[x].Ip) + (Ka * Ia);
+            
+            if(iluminacion > 1.0){
+				iluminacion = 1.0;
+				} 
             //printf ("Iluminacion: %f \n", iluminacion);
 
         }
