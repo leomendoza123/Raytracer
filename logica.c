@@ -5,17 +5,12 @@
 //Jose Carlos Alvarez Umana
 //Leonardo Mendoza
 
- double xToFramePoint(double xp, double hres, double xmax, double xmin){
+ double WindowPointToFramePoint(double xp, double hres, double xmax, double xmin){
     double xResult;
 	xResult = (double) ((double)xp + (double)1/2) * (((double) xmax - xmin)/ (double) hres  ) + xmin;
 	return xResult;
 	}
 
- double yToFramePoint(double yp, double vres, double ymax, double ymin){
-	 double yResult;
-	yResult = (double) ((double)yp + (double)1/2) * (((double) ymax - ymin )/ (double)vres) + ymin;
-	return yResult;
-	}
 
 double getL( double xw,  double yw,  double zw,  double xe,  double ye,  double ze){
 	double lResult;

@@ -29,6 +29,7 @@ RGB De_que_color ( Ray Rayo);
 int First_Intersection ( Ray Rayo, INTERSECTION *interseccion );
 int HayInterseccion(Ray *rayo, ESFERA *esfera, double *distancia);
 VECTOR PuntoInterseccion (Ray Rayo, double distancia);
+ VECTOR DireccionNormalizada (VECTOR Destino, VECTOR Origen );
 
 void cargaBuffer ();
 void escribirAvs();
@@ -121,8 +122,8 @@ void cargaBuffer (void){
                     for(j=0; j < vres; j++){
 
                     // Puntos en framebuffer
-                    Xw = xToFramePoint( i,  hres,  Xmax,  Xmin);
-                    Yw = yToFramePoint( j,  vres,  Ymax,  Ymin);
+                    Xw = WindowPointToFramePoint( i,  hres,  Xmax,  Xmin);
+                    Yw = WindowPointToFramePoint( j,  vres,  Ymax,  Ymin);
                     Zw = 0.0;
 
 
@@ -131,10 +132,15 @@ void cargaBuffer (void){
                     Xd = getXd(Xw, Xe, L);
                     Yd = getYd(Yw, Ye, L);
                     Zd = getZd(Zw, Ze, L);
+
+
                     Ray Rayo;
-                    Rayo.direccion.x = Xd;
-                    Rayo.direccion.y = Yd;
-                    Rayo.direccion.z = Zd;
+                    //Rayo.direccion.x = Xd;
+                    //Rayo.direccion.y = Yd;
+                    //Rayo.direccion.z = Zd;
+                    VECTOR PuntoVentana = {Xw, Yw, Zw};
+                    VECTOR Ojo = {Xe, Ye, Ze};
+                    Rayo.direccion = DireccionNormalizada (PuntoVentana,Ojo);
                     Rayo.origen.x = Xe;
                     Rayo.origen.y = Ye;
                     Rayo.origen.z = Ze;
@@ -235,4 +241,21 @@ int HayInterseccionConEferas(Ray *rayo, ESFERA *esfera, double *distancia)
 
     }
 
+
+
+/// REUBICAR
+
+ VECTOR DireccionNormalizada (VECTOR Destino, VECTOR Origen ){
+
+                        double L =  getL (Destino.x,Destino.y,Destino.z,Origen.x,Origen.y,Origen.z);
+                        VECTOR direccion;
+                        direccion.x = (double)getXd(Destino.x, Origen.x, L); // TODO: Usar una sola funccion
+                        direccion.y = (double)getYd(Destino.y, Origen.y, L);
+                        direccion.z = (double)getZd(Destino.z, Origen.z, L);
+
+
+
+
+                        return direccion;
+}
 
