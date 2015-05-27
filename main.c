@@ -15,6 +15,8 @@
 #include "main.h"
 #include "MESA.h"
 
+#include "creador.c"
+
 
 //Instituto Tecnologico de Costa Rica
 //Introduccion a los graficos por computadora
@@ -30,6 +32,7 @@ int First_Intersection ( Ray Rayo, INTERSECTION *interseccion );
 int HayInterseccion(Ray *rayo, ESFERA *esfera, double *distancia);
 VECTOR PuntoInterseccion (Ray Rayo, double distancia);
  VECTOR DireccionNormalizada (VECTOR Destino, VECTOR Origen );
+ void CreaEsferas();
 
 void cargaBuffer ();
 void escribirAvs();
@@ -38,11 +41,12 @@ int main(int argc, char* argv[])
         {
         W_HEIGHT = 500;
         W_WIDTH = 500;
-
+        //CreaEsferas();
         //Inicia GLUT
         glutInit(&argc, argv);
         //Inicia el buffer
         BufferInit();
+
         cargaBuffer();
         escribirAvs();
         init();
@@ -168,19 +172,17 @@ RGB De_que_color (Ray Rayo)
 
         double iluminacion = 0;
         unsigned int numLuces = sizeof(listaLuces)/sizeof(listaLuces[0]);
-        int x;
+
         VECTOR L;
         double CosVectores;
+        INTERSECTION CausanteDeSombra;
          double spec = 0;
+
+        int x;
         for (x = 0; x< numLuces; x++){
-            //printf ("%f, %f, %f __[[\n", interseccion.puntoInterseccion.x, interseccion.puntoInterseccion.y, interseccion.puntoInterseccion.z);
-
-
             L = DireccionNormalizada (listaLuces[x].origen, interseccion.puntoInterseccion);
-            Ray LineaHaciaLuz ;
-            LineaHaciaLuz.direccion = L;
-            LineaHaciaLuz.origen = interseccion.puntoInterseccion;
-            INTERSECTION CausanteDeSombra;
+            Ray LineaHaciaLuz = {L, interseccion.puntoInterseccion};
+
             if (!First_Intersection(LineaHaciaLuz, &CausanteDeSombra )){
                 double F =  (double)1/((double)listaLuces[x].C1+interseccion.distancia*listaLuces[x].C2+(listaLuces[x].C3*interseccion.distancia*interseccion.distancia));
                 if (F>1){
@@ -195,20 +197,12 @@ RGB De_que_color (Ray Rayo)
                 iluminacion += CosVectores * interseccion.esfera.KD * listaLuces[x].Ip * F;
 
                 //REFLEJO ESPECULAR
-
                 VECTOR V = vectorNegado(Rayo.direccion);
                 VECTOR R = vectorResta(vectorMultiplicacion(N, CosVectores * 2.0), L) ;
                 double Ri = vectorProductoPunto(V, R);
                 if (!(Ri < 0)) {
                     spec += pow(Ri, KN) * KS * listaLuces[x].Ip * F ;
                 }
-
-               // printf ("Specular: %f \n", spec);
-                /*
-                printf ("V: %f, %f, %f, \n", V.x, V.y, V.z) ;
-                printf ("R: %f, %f, %f, \n", R.x, R.y, R.z) ;
-                printf ("Ri: %f \n", Ri);
-                printf ("KN, KS : %f, %f \n", KN, KS);*/
 
             }
 
